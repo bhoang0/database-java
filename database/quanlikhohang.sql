@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE ctkiemke (
-  maphieukiemmke int NOT NULL /*COMMENT N'Mã phiếu kiểm kê'*/,
-  masanpham int NOT NULL /*COMMENT N'Mã sản phẩm'*/,
+  maphieukiemmke int NOT NULL COMMENT N'Mã phiếu kiểm kê',
+  masanpham int NOT NULL COMMENT N'Mã sản phẩm',
   soluong int  NOT NULL,
   chenhlech int  NOT NULL,
   ghichu varchar(255) NOT NULL
@@ -46,7 +46,7 @@ CREATE TABLE  ctphieunhap  (
    maphienbansp  int  NOT NULL DEFAULT 0,
    soluong  int  NOT NULL DEFAULT 0,
    dongia  int  NOT NULL DEFAULT 0,
-   hinhthucnhap int  /*tinyint(1)*/ NOT NULL DEFAULT 0
+   hinhthucnhap tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -250,7 +250,7 @@ INSERT INTO  ctquyen  ( manhomquyen ,  machucnang ,  hanhdong ) VALUES
 --
 
 CREATE TABLE  ctsanpham  (
-   sokhung  varchar(255) NOT NULL DEFAULT 'AUTO_INCREMENT' /*COMMENT N'Số khung của sản phẩm'*/,
+   sokhung  varchar(255) NOT NULL DEFAULT 'AUTO_INCREMENT' COMMENT N'Số khung của sản phẩm',
    maphienbansp  int  NOT NULL,
    maphieunhap  int  NOT NULL,
    maphieuxuat  int  DEFAULT NULL,
@@ -556,7 +556,7 @@ INSERT INTO  danhmucchucnang  ( machucnang ,  tenchucnang ,  trangthai ) VALUES
 CREATE TABLE  dungtichxilanh  (
    madtxl  int  NOT NULL,
    dungtich  int  DEFAULT NULL,
-   trangthai int  /*tinyint(4)*/ DEFAULT 1
+   trangthai tinyint(4) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -579,7 +579,7 @@ INSERT INTO  dungtichxilanh  ( madtxl ,  dungtich ,  trangthai ) VALUES
 CREATE TABLE  docaoyen  (
    madc int  NOT NULL,
    docao  int  DEFAULT NULL,
-   trangthai int /*tinyint(4)*/ DEFAULT 1
+   trangthai tinyint(4) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -604,7 +604,7 @@ INSERT INTO  docaoyen ( madc ,  docao ,  trangthai ) VALUES
 CREATE TABLE  loaixe  (
    maloaixe  int  NOT NULL,
    tenloaixe  nvarchar(255) NOT NULL,
-   trangthai int /*tinyint(1)*/ DEFAULT NULL
+   trangthai tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -689,7 +689,7 @@ INSERT INTO  khuvuckho  ( makhuvuc ,  tenkhuvuc ,  ghichu ,  trangthai ) VALUES
 CREATE TABLE  mausac  (
    mamau  int  NOT NULL,
    tenmau  nvarchar(50) NOT NULL DEFAULT '0',
-   trangthai INT /*tinyint(4)*/ DEFAULT 1
+   trangthai tinyint(4) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -797,7 +797,7 @@ CREATE TABLE  phienbansanpham  (
    gianhap  int  DEFAULT NULL,
    giaxuat  int  DEFAULT NULL,
    soluongton  int  DEFAULT 0,
-   trangthai  int /*tinyint(1)*/ NOT NULL DEFAULT 1
+   trangthai  tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -880,7 +880,7 @@ CREATE TABLE  phieubaohanh  (
    maphieubaohanh  int  NOT NULL,
    sokhung  varchar(255) NOT NULL,
    lydo  varchar(50) NOT NULL,
-   thoigian  datetime NOT NULL /*DEFAULT curdate()*/,
+   thoigian  datetime NOT NULL DEFAULT curdate(),
    thoigiantra  datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -891,10 +891,10 @@ CREATE TABLE  phieubaohanh  (
 --
 
 CREATE TABLE  phieudoi  (
-   maphieudoi  int /*tinyint(4)*/ NOT NULL DEFAULT 0,
+   maphieudoi  tinyint(4) NOT NULL DEFAULT 0,
    sokhung  varchar(255) NOT NULL,
    lydo  varchar(255) NOT NULL,
-   thoigian  date /*DEFAULT curdate()*/,
+   thoigian  date DEFAULT curdate(),
    nguoitao  int  NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -906,7 +906,7 @@ CREATE TABLE  phieudoi  (
 
 CREATE TABLE  phieukiemke  (
    maphieukk  int  NOT NULL,
-   thoigian  date NOT NULL /*DEFAULT curdate()*/,
+   thoigian  date NOT NULL DEFAULT curdate(),
    nguoitaophieukiemke  int  NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -918,10 +918,10 @@ CREATE TABLE  phieukiemke  (
 
 CREATE TABLE  phieunhap  (
    maphieunhap  int  NOT NULL,
-   thoigian  datetime /*DEFAULT current_timestamp()*/,
+   thoigian  datetime DEFAULT current_timestamp(),
    manhacungcap  int  NOT NULL,
    nguoitao  int  NOT NULL,
-   tongtien  bigint/*(20)*/ NOT NULL DEFAULT 0,
+   tongtien  bigint(20) NOT NULL DEFAULT 0,
    trangthai  int  NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -961,7 +961,7 @@ CREATE TABLE  phieutra  (
    maphieutra  int  NOT NULL,
    sokhung  varchar(255) NOT NULL,
    lydo  varchar(255) NOT NULL,
-   thoigian  date /*DEFAULT curdate()*/,
+   thoigian  date DEFAULT curdate(),
    nguoitao  int  NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -973,8 +973,8 @@ CREATE TABLE  phieutra  (
 
 CREATE TABLE  phieuxuat  (
    maphieuxuat  int  NOT NULL,
-   thoigian  datetime NOT NULL /*DEFAULT current_timestamp()*/,
-   tongtien  bigint/*(20)*/ DEFAULT NULL,
+   thoigian  datetime NOT NULL DEFAULT current_timestamp(),
+   tongtien  bigint(20) DEFAULT NULL,
    nguoitaophieuxuat  int  DEFAULT NULL,
    makh  int  DEFAULT NULL,
    trangthai  int  DEFAULT NULL
@@ -1029,7 +1029,7 @@ CREATE TABLE  sanpham  (
    thuonghieu  int  DEFAULT NULL,
    khuvuckho  int  DEFAULT NULL,
    soluongton  int  DEFAULT 0,
-   trangthai  int /*tinyint(1)*/ DEFAULT 1
+   trangthai  tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1089,7 +1089,7 @@ INSERT INTO  taikhoan  ( manv ,  matkhau ,  manhomquyen ,  tendangnhap ,  trangt
 CREATE TABLE  thuonghieu  (
    mathuonghieu  int  NOT NULL,
    tenthuonghieu  varchar(255) NOT NULL,
-   trangthai int /*tinyint(1)*/ NOT NULL DEFAULT 1
+   trangthai tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1113,7 +1113,7 @@ INSERT INTO  thuonghieu  ( mathuonghieu ,  tenthuonghieu ,  trangthai ) VALUES
 CREATE TABLE  xuatxu  (
    maxuatxu  int  NOT NULL,
    tenxuatxu  nvarchar(50) NOT NULL,
-   trangthai  int /*tinyint(1)*/ DEFAULT 1
+   trangthai  tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1152,13 +1152,13 @@ ALTER TABLE  ctphieuxuat
 -- Indexes for table  ctquyen 
 --
 ALTER TABLE  ctquyen 
-  ADD PRIMARY KEY ( manhomquyen , machucnang , hanhdong ) /*USING BTREE*/;
+  ADD PRIMARY KEY ( manhomquyen , machucnang , hanhdong ) USING BTREE;
 
 --
 -- Indexes for table  ctsanpham 
 --
 ALTER TABLE  ctsanpham 
-  ADD PRIMARY KEY ( sokhung ) /*USING BTREE*/;
+  ADD PRIMARY KEY ( sokhung ) USING BTREE;
 
 --
 -- Indexes for table  danhmucchucnang 
@@ -1182,7 +1182,7 @@ ALTER TABLE  docaoyen
 -- Indexes for table  loaixe
 --
 ALTER TABLE  loaixe
-  ADD PRIMARY KEY ( maloaixe ) /*USING BTREE*/;
+  ADD PRIMARY KEY ( maloaixe ) USING BTREE;
 
 --
 -- Indexes for table  khachhang 
