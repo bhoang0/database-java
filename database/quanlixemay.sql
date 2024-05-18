@@ -1,30 +1,25 @@
-﻿
-
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 17, 2023 at 04:53 AM
+-- Generation Time: May 17, 2024 at 04:53 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
---SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-BEGIN TRANSACTION;
---SET time_zone = "+00:00";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-/* cái này tui viết để chạy trên sql */
-CREATE DATABASE quanlikhoxemay
-USE quanlikhoxemay
 
 
 --
--- Database:  quanlikhoxemay 
+-- Database:   quanlixemay  
 --
 
 -- --------------------------------------------------------
@@ -34,13 +29,13 @@ USE quanlikhoxemay
 --
 
 CREATE TABLE Account (
-  fullName nvarchar(50) DEFAULT NULL,
-  userName nvarchar(50) NOT NULL,
+  fullName varchar(50) DEFAULT NULL,
+  userName varchar(50) NOT NULL,
   password varchar(60) DEFAULT NULL,
-  role nvarchar(50) DEFAULT NULL,
-  status int DEFAULT NULL,
+  role varchar(50) DEFAULT NULL,
+  status int(11) DEFAULT NULL,
   email varchar(50) DEFAULT NULL
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table  Account 
@@ -48,9 +43,9 @@ CREATE TABLE Account (
 
 INSERT INTO Account (fullName, userName, password, role, status, email) VALUES
 ('Admin', 'admin', '$2a$12$Y87zSnx.tpFvieylSeXuo.agjb7swi3UVnoo6KVMY9xP5STj4zJhm', 'Admin', 1, 'sinhbaoreact2003@gmail.com'),
-(N'Trần Thị Kim Huệ', 'kimhue', '$2a$12$PhiTGBbHjHoB3dbS6BmCC.rzdMCBqDrdK9Y8Ae8GPcKe1RpHiWARO', N'Nhân viên xuất', 1, 'hgiabao2k3@gmail.com'),
-(N'Trần Nguyễn Bảo Hoàng', 'baohoang', '$2a$12$89As1J0AB0yrqGjnQUHtpevc6voGyvzAd8OvzkS1vGDo3YPO2P.Ia', N'Nhân viên nhập', 1, 'transinh342@gmail.com'),
-(N'Trần Phạm Trúc Anh', 'trucanh', '$2a$12$myOaq0kATMzNkbxgzQEkPu8ht2K0pXOGzZMZo6nSBowq6EyoLo7tS', N'Quản lý kho', 1, 'a11611112003@gmail.com');
+('Trần Thị Kim Huệ', 'kimhue', '$2a$12$PhiTGBbHjHoB3dbS6BmCC.rzdMCBqDrdK9Y8Ae8GPcKe1RpHiWARO', 'Nhân viên xuất', 1, 'hgiabao2k3@gmail.com'),
+('Trần Nguyễn Bảo Hoàng', 'baohoang', '$2a$12$89As1J0AB0yrqGjnQUHtpevc6voGyvzAd8OvzkS1vGDo3YPO2P.Ia', 'Nhân viên nhập', 1, 'transinh342@gmail.com'),
+('Trần Phạm Trúc Anh', 'trucanh', '$2a$12$myOaq0kATMzNkbxgzQEkPu8ht2K0pXOGzZMZo6nSBowq6EyoLo7tS', 'Quản lý kho', 1, 'a11611112003@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -60,56 +55,56 @@ INSERT INTO Account (fullName, userName, password, role, status, email) VALUES
 
 CREATE TABLE  XeMay  (
    maXe  varchar(50) NOT NULL,
-   tenXe  nvarchar(100) DEFAULT NULL,
-   soLuong  int NOT NULL DEFAULT 0,
-   tenDongCo  nvarchar(100) NOT NULL DEFAULT '0',
-   phanKhoi  nvarchar(50) NOT NULL DEFAULT '0',
-   doCaoYen  nvarchar(50) DEFAULT NULL,
-   gia  int NOT NULL DEFAULT 0,
-   congSuat nvarchar(50) DEFAULT NULL,
-   khoiLuong int DEFAULT NULL,
-   loaiXe  nvarchar(50) DEFAULT NULL,
-   tieuthuNhienLieu nvarchar(50) DEFAULT NULL,
-   dungTichbinhXang float DEFAULT NULL,
-   phienBan  nvarchar(50) DEFAULT NULL,
-   xuatXu  nvarchar(50) DEFAULT NULL,
-   trangThai  int DEFAULT NULL
-);
+   tenXe  varchar(100) DEFAULT NULL,
+   soLuong  int(11) NOT NULL DEFAULT 0,
+   tenDongCo  varchar(100) NOT NULL DEFAULT '0',
+   phanKhoi  varchar(50) NOT NULL DEFAULT '0',
+   doCaoYen  varchar(50) DEFAULT NULL,
+   gia  double NOT NULL DEFAULT 0,
+   congSuat varchar(50) DEFAULT NULL,
+   khoiLuong int(11) DEFAULT NULL,
+   loaiXe  varchar(50) DEFAULT NULL,
+   tieuthuNhienLieu varchar(50) DEFAULT NULL,
+   dungTichbinhXang double DEFAULT NULL,
+   phienBan  varchar(50) DEFAULT NULL,
+   xuatXu  varchar(50) DEFAULT NULL,
+   trangThai  int(11) DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table  XeMay 
 --
 
 INSERT INTO  XeMay  ( maXe ,  tenXe ,  soLuong ,  tenDongCo ,  phanKhoi ,  doCaoYen ,  gia ,  congSuat ,  khoiLuong ,  loaiXe ,  tieuthuNhienLieu ,  dungTichbinhXang ,  phienBan ,  xuatXu ,  trangThai ) VALUES
-('HD1', 'Honda SH350i', 36, N'SOHC, 4 kỳ, xy-lanh đơn 4 van, làm mát bằng chất lỏng, đáp ứng Euro 3', '329,6 cm3', '805 mm', 150000000, NULL, NULL, N'Xe tay ga', N'3.63 lít/100km', 9.3, N'Cao cấp', N'Nhật Bản', 0),
-('HD2', 'Honda Wave Alpha 110', 23, N'4 kỳ, 1 xilanh, làm mát bằng không khí', '109,2 cm3', '770 mm', 17500000, NULL, NULL, N'Xe số', N'1.72 lít/100km', 3.7, N'Tiêu chuẩn', N'Nhật Bản', 0),
-('HD3', 'Honda Winner X 2024', 19, N'PGM-FI, DOHC, 4 kỳ xi-lanh đơn, côn tay 6 cấp số, làm mát bằng chất lỏng', '149,2 cm3', '795 mm', 46500000, NULL, NULL, N'Xe côn tay', N'1.98 lít/100km', 5.5, N'Tiêu chuẩn', N'Nhật Bản', 1),
-('HD4', 'Honda Super Cub C125', 3, N'PGM-FI, 4 kỳ, xy-lanh đơn, làm mát bằng không khí', '123,94 cm3', '780 mm', 87000000, NULL, NULL, N'Xe số', N'1.5 lít/100km', 3.7, N'Đặc biệt', N'Nhật Bản', 1),
-('YH1', 'Yamaha Sirius RC', 28, N'4 thì, 2 van SOHC, làm mát bằng không khí', '110.3 cm3', '770 mm', 21000000, NULL, NULL, N'Xe số', N'2.08 lít/100km', 4.2, N'Tiêu chuẩn', N'Nhật Bản', 1),
-('YH2', 'Yamaha Grande', 62, N'Blue Core, SOHC, 4 kỳ, 2 van, Làm mát bằng không khí cưỡng bức', '124,9 cm3', '790 mm', 49000000, NULL, NULL, N'Xe tay ga', N'1.69 lít/100km', 4.4, N'Đặc biệt', N'Nhật Bản', 1),
-('YH3', 'Yamaha Jupiter Finn', 22, N'4 thì, 2 van, SOHC, làm mát bằng không khí', '113.7 cm3', '775 mm', 28000000, NULL, NULL, N'Xe số', N'1.64 lít/100km', 4, N'Cao cấp', N'Nhật Bản', 1),
-('YH4', 'Yamaha Exciter 155 VVA', 23, N'4 kỳ, 4 van, SOHC, làm mát bằng chất lỏng', '155.1 cm3', '795 mm', 54000000, NULL, NULL, N'Xe số', N'2 lít/100km', 5.4, N'Cao cấp', N'Nhật Bản', 1),
-('YH5', 'Yamaha Latte', 18, N'Blue Core, 2 van, 4 kỳ, SOHC, Làm mát bằng không khí cưỡng bức', '124.9 cm3', '790 mm', 38000000, NULL, NULL, N'Xe tay ga', N'1.8 lít/100km', 5.5, N'Tiêu chuẩn', N'Nhật Bản', 1),
-('SK1', 'Suzuki Address Fi', 19, N'4 thì, 1 xy-lanh, làm mát bằng không khí', '113 cm3', '755 mm', 29000000, NULL, NULL, N'Xe tay ga', N'1.86 lít/100km', 5.2, N'Tiêu chuẩn', N'Nhật Bản', 1),
-('SK2', 'Suzuki Raider R150', 16, N'DOHC, 4 van, côn tay 6 cấp số', '150 cm3', '765 mm', 49000000, NULL, NULL, N'Xe côn tay', N'2.4 lít/100km', 4, N'Tiêu chuẩn', N'Nhật Bản', 1),
-('PG1', 'Piaggio Liberty 125 ABS', 20, N'Piaggio iGet, 4 kỳ, phun xăng điện tử', '124.5 cm3', '780 mm', 57000000, NULL, NULL, N'Xe tay ga', N'2.63 lít/100km', 6, N'Tiêu chuẩn', N'Ý', 1),
-('PG2', 'Piaggio Vespa Primavera 125', 37,  N'Piaggio iGet, 4 kỳ, 3 van, phun xăng điện tử', '124.5 cm3', '770 mm', 77000000, NULL, NULL, N'Xe tay ga', N'2.67 lít/100km', 7, N'Tiêu chuẩn', N'Ý', 1),
-('SY1', 'Sym Elite 50', 34, N'4 kỳ, 1 xi-lanh, làm mát bằng không khí', '50 cm3', '740 mm', 22000000, NULL, NULL, N'Xe tay ga',  N'2.5 lít/100km', 4.5, N'Tiêu chuẩn', N'Đài Loan', 1),
-('SY2', 'Sym Attila 50', 53, N'4 thì, làm mát bằng không khí', '50 cm3', '750 mm', 20000000, NULL, NULL, N'Xe tay ga', N'2.22 lít/100km', 6.2, N'Tiêu chuẩn', N'Đài Loan', 1),
-('SY3', 'Sym Angela 50', 83, N'4 thì, Làm mát bằng không khí', '50 cm3', '750 mm', 17000000, NULL, NULL, N'Xe tay ga', N'1.26 lít/100km', 3.4, N'Tiêu chuẩn', N'Đài Loan', 1),
-('SY4', 'Sym Star SR 125 EFI', 118, N'Động cơ 4 thì, SOHC', '123 cm3', '780 mm', 27500000, NULL, NULL, N'Xe côn tay', N'1.81 lít/100km', 3.6,  N'Tiêu chuẩn', N'Đài Loan', 1),
-('HD5', 'Honda SH350i', 11, N'SOHC, 4 kỳ, xy-lanh đơn 4 van, làm mát bằng chất lỏng; đáp ứng Euro 3', '329,6 cm3', '805 mm', 145000000, NULL, NULL, N'Xe tay ga', N'3.63 lít/100km', 9.3, N'Đặc biệt', N'Nhật Bản', 1),
-('HD6', 'Honda Wave Alpha 110', 90, N'4 kỳ, 1 xilanh, làm mát bằng không khí', '109,2 cm3', '770 mm', 18000000, NULL, NULL, N'Xe số', N'1.72 lít/100km', 3.7, N'Đặc biệt', N'Nhật Bản', 1),
-('HD7', 'Honda Wave Alpha 110', 19, N'4 kỳ, 1 xilanh, làm mát bằng không khí', '109,2 cm3', '770 mm', 18500000, NULL, NULL, N'Xe số', N'1.72 lít/100km', 3.7, N'giới hạn', N'Nhật Bản', 1),
-('HD8', 'Honda Winner X 2024', 60, N'PGM-FI, DOHC, 4 kỳ xi-lanh đơn, côn tay 6 cấp số, làm mát bằng chất lỏng', '149,2 cm3', '795 mm', 47000000, NULL, NULL, N'Xe côn tay', N'1.98 lít/100km', 5.5, N'Thể thao', N'Nhật Bản', 1),
-('YH6', 'Yamaha Latte', 25, N'Blue Core, 2 van, 4 kỳ, SOHC, Làm mát bằng không khí cưỡng bức', '124.9 cm3', '790 mm', 40000000, NULL, NULL, N'Xe tay ga', N'1.8 lít/100km', 5.5, N'Cao cấp', N'Nhật Bản', 1),
-('PG3', 'Piaggio Liberty 125 ABS', 19, N'Piaggio iGet, 4 kỳ, phun xăng điện tử', '124.5 cm3', '780 mm', 60000000, NULL, NULL, N'Xe tay ga', N'2.63 lít/100km', 6, N'Cao cấp', N'Ý', 1),
-('PG4', 'Piaggio Vespa Primavera 125', 16,  N'Piaggio iGet, 4 kỳ, 3 van, phun xăng điện tử', '124.5 cm3', '770 mm', 77500000, NULL, NULL, N'Xe tay ga', N'2.67 lít/100km', 7, N'Cao cấp', N'Ý', 1),
-('YH7', 'Yamaha Jupiter Finn', 30, N'4 thì, 2 van, SOHC, làm mát bằng không khí', '113.7 cm3', '775 mm', 25000000, NULL, NULL, N'Xe số', N'1.64 lít/100km', 4, N'Tiêu chuẩn', N'Nhật Bản', 1),
-('SY5', 'Sym Elite 50', 19, N'4 kỳ, 1 xi-lanh, làm mát bằng không khí', '50 cm3', '740 mm', 25000000, NULL, NULL, N'Xe tay ga',  N'2.5 lít/100km', 4.5, N'Đặc biệt', N'Đài Loan', 1),
-('SK3', 'Suzuki Address Fi', 30, N'4 thì, 1 xy-lanh, làm mát bằng không khí', '113 cm3', '755 mm', 30000000, NULL, NULL, N'Xe tay ga', N'1.86 lít/100km', 5.2, N'Đặc biệt', N'Nhật Bản', 1),
-('SK4', 'Suzuki Raider R150', 33, N'DOHC, 4 van, côn tay 6 cấp số', '150 cm3', '765 mm', 50000000, NULL, NULL, N'Xe côn tay', N'2.4 lít/100km', 4, N'Đặc biệt', N'Nhật Bản', 1),
-('HD9', 'Honda Super Cub C125', 21, N'PGM-FI, 4 kỳ, xy-lanh đơn, làm mát bằng không khí', '123,94 cm3', '780 mm', 85000000, NULL, NULL, N'Xe số', N'1.5 lít/100km', 3.7, N'Tiêu chuẩn', N'Nhật Bản', 1);
+('HD1', 'Honda SH350i', 36, 'SOHC, 4 kỳ, xy-lanh đơn 4 van, làm mát bằng chất lỏng, đáp ứng Euro 3', '329,6 cm3', '805 mm', 150000000, NULL, NULL, 'Xe tay ga', '3.63 lít/100km', 9.3, 'Cao cấp', 'Nhật Bả', 0),
+('HD2', 'Honda Wave Alpha 110', 23, '4 kỳ, 1 xilanh, làm mát bằng không khí', '109,2 cm3', '770 mm', 17500000, NULL, NULL, 'Xe số', '1.72 lít/100km', 3.7, 'Tiêu chuẩ', 'Nhật Bả', 0),
+('HD3', 'Honda Winner X 2024', 19, 'PGM-FI, DOHC, 4 kỳ xi-lanh đơn, côn tay 6 cấp số, làm mát bằng chất lỏng', '149,2 cm3', '795 mm', 46500000, NULL, NULL, 'Xe côn tay', '1.98 lít/100km', 5.5, 'Tiêu chuẩ', 'Nhật Bả', 1),
+('HD4', 'Honda Super Cub C125', 3, 'PGM-FI, 4 kỳ, xy-lanh đơn, làm mát bằng không khí', '123,94 cm3', '780 mm', 87000000, NULL, NULL, 'Xe số', '1.5 lít/100km', 3.7, 'Đặc biệt', 'Nhật Bả', 1),
+('YH1', 'Yamaha Sirius RC', 28, '4 thì, 2 van SOHC, làm mát bằng không khí', '110.3 cm3', '770 mm', 21000000, NULL, NULL, 'Xe số', '2.08 lít/100km', 4.2, 'Tiêu chuẩ', 'Nhật Bả', 1),
+('YH2', 'Yamaha Grande', 62, 'Blue Core, SOHC, 4 kỳ, 2 van, Làm mát bằng không khí cưỡng bức', '124,9 cm3', '790 mm', 49000000, NULL, NULL, 'Xe tay ga', '1.69 lít/100km', 4.4, 'Đặc biệt', 'Nhật Bả', 1),
+('YH3', 'Yamaha Jupiter Fin', 22, '4 thì, 2 van, SOHC, làm mát bằng không khí', '113.7 cm3', '775 mm', 28000000, NULL, NULL, 'Xe số', '1.64 lít/100km', 4, 'Cao cấp', 'Nhật Bả', 1),
+('YH4', 'Yamaha Exciter 155 VVA', 23, '4 kỳ, 4 van, SOHC, làm mát bằng chất lỏng', '155.1 cm3', '795 mm', 54000000, NULL, NULL, 'Xe số', '2 lít/100km', 5.4, 'Cao cấp', 'Nhật Bả', 1),
+('YH5', 'Yamaha Latte', 18, 'Blue Core, 2 van, 4 kỳ, SOHC, Làm mát bằng không khí cưỡng bức', '124.9 cm3', '790 mm', 38000000, NULL, NULL, 'Xe tay ga', '1.8 lít/100km', 5.5, 'Tiêu chuẩ', 'Nhật Bả', 1),
+('SK1', 'Suzuki Address Fi', 19, '4 thì, 1 xy-lanh, làm mát bằng không khí', '113 cm3', '755 mm', 29000000, NULL, NULL, 'Xe tay ga', '1.86 lít/100km', 5.2, 'Tiêu chuẩ', 'Nhật Bả', 1),
+('SK2', 'Suzuki Raider R150', 16, 'DOHC, 4 van, côn tay 6 cấp số', '150 cm3', '765 mm', 49000000, NULL, NULL, 'Xe côn tay', '2.4 lít/100km', 4, 'Tiêu chuẩ', 'Nhật Bả', 1),
+('PG1', 'Piaggio Liberty 125 ABS', 20, 'Piaggio iGet, 4 kỳ, phun xăng điện tử', '124.5 cm3', '780 mm', 57000000, NULL, NULL, 'Xe tay ga', '2.63 lít/100km', 6, 'Tiêu chuẩ', 'Ý', 1),
+('PG2', 'Piaggio Vespa Primavera 125', 37,  'Piaggio iGet, 4 kỳ, 3 van, phun xăng điện tử', '124.5 cm3', '770 mm', 77000000, NULL, NULL, 'Xe tay ga', '2.67 lít/100km', 7, 'Tiêu chuẩ', 'Ý', 1),
+('SY1', 'Sym Elite 50', 34, '4 kỳ, 1 xi-lanh, làm mát bằng không khí', '50 cm3', '740 mm', 22000000, NULL, NULL, 'Xe tay ga',  '2.5 lít/100km', 4.5, 'Tiêu chuẩ', 'Đài Loa', 1),
+('SY2', 'Sym Attila 50', 53, '4 thì, làm mát bằng không khí', '50 cm3', '750 mm', 20000000, NULL, NULL, 'Xe tay ga', '2.22 lít/100km', 6.2, 'Tiêu chuẩ', 'Đài Loa', 1),
+('SY3', 'Sym Angela 50', 83, '4 thì, Làm mát bằng không khí', '50 cm3', '750 mm', 17000000, NULL, NULL, 'Xe tay ga', '1.26 lít/100km', 3.4, 'Tiêu chuẩ', 'Đài Loa', 1),
+('SY4', 'Sym Star SR 125 EFI', 118, 'Động cơ 4 thì, SOHC', '123 cm3', '780 mm', 27500000, NULL, NULL, 'Xe côn tay', '1.81 lít/100km', 3.6,  'Tiêu chuẩ', 'Đài Loa', 1),
+('HD5', 'Honda SH350i', 11, 'SOHC, 4 kỳ, xy-lanh đơn 4 van, làm mát bằng chất lỏng; đáp ứng Euro 3', '329,6 cm3', '805 mm', 145000000, NULL, NULL, 'Xe tay ga', '3.63 lít/100km', 9.3, 'Đặc biệt', 'Nhật Bả', 1),
+('HD6', 'Honda Wave Alpha 110', 90, '4 kỳ, 1 xilanh, làm mát bằng không khí', '109,2 cm3', '770 mm', 18000000, NULL, NULL, 'Xe số', '1.72 lít/100km', 3.7, 'Đặc biệt', 'Nhật Bả', 1),
+('HD7', 'Honda Wave Alpha 110', 19, '4 kỳ, 1 xilanh, làm mát bằng không khí', '109,2 cm3', '770 mm', 18500000, NULL, NULL, 'Xe số', '1.72 lít/100km', 3.7, 'giới hạ', 'Nhật Bả', 1),
+('HD8', 'Honda Winner X 2024', 60, 'PGM-FI, DOHC, 4 kỳ xi-lanh đơn, côn tay 6 cấp số, làm mát bằng chất lỏng', '149,2 cm3', '795 mm', 47000000, NULL, NULL, 'Xe côn tay', '1.98 lít/100km', 5.5, 'Thể thao', 'Nhật Bả', 1),
+('YH6', 'Yamaha Latte', 25, 'Blue Core, 2 van, 4 kỳ, SOHC, Làm mát bằng không khí cưỡng bức', '124.9 cm3', '790 mm', 40000000, NULL, NULL, 'Xe tay ga', '1.8 lít/100km', 5.5, 'Cao cấp', 'Nhật Bả', 1),
+('PG3', 'Piaggio Liberty 125 ABS', 19, 'Piaggio iGet, 4 kỳ, phun xăng điện tử', '124.5 cm3', '780 mm', 60000000, NULL, NULL, 'Xe tay ga', '2.63 lít/100km', 6, 'Cao cấp', 'Ý', 1),
+('PG4', 'Piaggio Vespa Primavera 125', 16,  'Piaggio iGet, 4 kỳ, 3 van, phun xăng điện tử', '124.5 cm3', '770 mm', 77500000, NULL, NULL, 'Xe tay ga', '2.67 lít/100km', 7, 'Cao cấp', 'Ý', 1),
+('YH7', 'Yamaha Jupiter Fin', 30, '4 thì, 2 van, SOHC, làm mát bằng không khí', '113.7 cm3', '775 mm', 25000000, NULL, NULL, 'Xe số', '1.64 lít/100km', 4, 'Tiêu chuẩ', 'Nhật Bả', 1),
+('SY5', 'Sym Elite 50', 19, '4 kỳ, 1 xi-lanh, làm mát bằng không khí', '50 cm3', '740 mm', 25000000, NULL, NULL, 'Xe tay ga',  '2.5 lít/100km', 4.5, 'Đặc biệt', 'Đài Loa', 1),
+('SK3', 'Suzuki Address Fi', 30, '4 thì, 1 xy-lanh, làm mát bằng không khí', '113 cm3', '755 mm', 30000000, NULL, NULL, 'Xe tay ga', '1.86 lít/100km', 5.2, 'Đặc biệt', 'Nhật Bả', 1),
+('SK4', 'Suzuki Raider R150', 33, 'DOHC, 4 van, côn tay 6 cấp số', '150 cm3', '765 mm', 50000000, NULL, NULL, 'Xe côn tay', '2.4 lít/100km', 4, 'Đặc biệt', 'Nhật Bả', 1),
+('HD9', 'Honda Super Cub C125', 21, 'PGM-FI, 4 kỳ, xy-lanh đơn, làm mát bằng không khí', '123,94 cm3', '780 mm', 85000000, NULL, NULL, 'Xe số', '1.5 lít/100km', 3.7, 'Tiêu chuẩ', 'Nhật Bả', 1);
 
 
 -- --------------------------------------------------------
@@ -120,24 +115,24 @@ INSERT INTO  XeMay  ( maXe ,  tenXe ,  soLuong ,  tenDongCo ,  phanKhoi ,  doCao
 
 CREATE TABLE  NhaCungCap  (
    maNhaCungCap  varchar(50) NOT NULL,
-   tenNhaCungCap  nvarchar(50) DEFAULT NULL,
+   tenNhaCungCap  varchar(50) DEFAULT NULL,
    Sdt  varchar(50) DEFAULT NULL,
-   diaChi  nvarchar(150) DEFAULT NULL
-);
+   diaChi  varchar(150) DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table  NhaCungCap 
 --
 
 INSERT INTO  NhaCungCap  ( maNhaCungCap ,  tenNhaCungCap ,  Sdt ,  diaChi ) VALUES
-('HONDA', N'Công ty TNHH Honda Motor', '02838361551', N'Tầng 18, Tòa nhà MB Sunny Tower, 259 Trần Hưng Đạo, Quận 1, Hồ Chí Minh'),
-('SUZUKI', N'Công ty TNHH Suzuki', '02513838707', N'Đường số 2, Khu công nghiệp Long Bình, Biên Hòa, Đồng Nai'),
-('YAMAHA', N'Công ty TNHH Yamaha Motor', '02873023456', N'Xã Trung Giã, Huyện Sóc Sơn, Thành Phố Hà Nội'),
-('CNYAMAHA', N'Chi nhánh Yamaha', '02435824900', N'Lô 48-54, 59-68, Khu Công nghiệp Nội Bài, Huyện Sóc Sơn, Hà Nội'),
-('XUANTRUNG', N'Cửa hàng xe máy Xuân Trung', '0788889393', N'33 Phạm Hùng, Q. Cẩm Lệ, TP. Đà Nẵng'),
-('PIAGGIO', N'Công ty TNHH Piaggio', '02439352030', N'46 Hoàng Quốc Việt, phường Nghĩa Đô, quận Cầu Giấy, thành phố Hà Nội'),
-('DATRACO', N'Cửa hàng Head đại lý Honda Datraco1', '02363752359', N'18-20 Hoàng Hoa Thám, Tân Chính, Thanh Khê, TP. Đà Nẵng'),
-('HOAIMINH', N'Công ty TNHH Hoài Minh', '0663831961', N'16 Hùng Vương, TT. Hòa Thành, H. Hòa Thành, Tây Ninh');
+('HONDA', 'Công ty TNHH Honda Motor', '02838361551', 'Tầng 18, Tòa nhà MB Sunny Tower, 259 Trần Hưng Đạo, Quận 1, Hồ Chí Minh'),
+('SUZUKI', 'Công ty TNHH Suzuki', '02513838707', 'Đường số 2, Khu công nghiệp Long Bình, Biên Hòa, Đồng Nai'),
+('YAMAHA', 'Công ty TNHH Yamaha Motor', '02873023456', 'Xã Trung Giã, Huyện Sóc Sơn, Thành Phố Hà Nội'),
+('CNYAMAHA', 'Chi nhánh Yamaha', '02435824900', 'Lô 48-54, 59-68, Khu Công nghiệp Nội Bài, Huyện Sóc Sơn, Hà Nội'),
+('XUANTRUNG', 'Cửa hàng xe máy Xuân Trung', '0788889393', '33 Phạm Hùng, Q. Cẩm Lệ, TP. Đà Nẵng'),
+('PIAGGIO', 'Công ty TNHH Piaggio', '02439352030', '46 Hoàng Quốc Việt, phường Nghĩa Đô, quận Cầu Giấy, thành phố Hà Nội'),
+('DATRACO', 'Cửa hàng Head đại lý Honda Datraco1', '02363752359', '18-20 Hoàng Hoa Thám, Tân Chính, Thanh Khê, TP. Đà Nẵng'),
+('HOAIMINH', 'Công ty TNHH Hoài Minh', '0663831961', '16 Hùng Vương, TT. Hòa Thành, H. Hòa Thành, Tây Ninh');
 
 -- --------------------------------------------------------
 
@@ -147,11 +142,11 @@ INSERT INTO  NhaCungCap  ( maNhaCungCap ,  tenNhaCungCap ,  Sdt ,  diaChi ) VALU
 
 CREATE TABLE  PhieuNhap  (
    maPhieu  varchar(50) NOT NULL,
-   thoiGianTao DATETIME2 DEFAULT GETDATE() NULL,
-   nguoiTao  nvarchar(50) DEFAULT NULL,
+   thoiGianTao timestamp NULL DEFAULT NULL,
+   nguoiTao  varchar(50) DEFAULT NULL,
    maNhaCungCap  varchar(50) DEFAULT NULL,
-   tongTien  bigint NOT NULL
-);
+   tongTien  double NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table  PhieuNhap 
@@ -207,10 +202,10 @@ VALUES
 
 CREATE TABLE  PhieuXuat  (
    maPhieu  varchar(50) NOT NULL,
-   thoiGianTao DATETIME2 DEFAULT GETDATE() NOT NULL,
-   nguoiTao  nvarchar(50) NOT NULL,
-   tongTien  bigint NOT NULL
-);
+   thoiGianTao timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+   nguoiTao  varchar(50) NOT NULL,
+   tongTien  double NOT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table  PhieuXuat 
@@ -251,9 +246,9 @@ VALUES
 CREATE TABLE ChiTietPhieuNhap (
    maPhieu varchar(50) NOT NULL,
    maXe  varchar(50) NOT NULL,
-   soLuong  int DEFAULT NULL,
-   donGia  bigint DEFAULT NULL
-);
+   soLuong  int(11) DEFAULT NULL,
+   donGia  double DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table  ChiTietPhieuNhap 
@@ -372,9 +367,9 @@ VALUES
 CREATE TABLE  ChiTietPhieuXuat  (
    maPhieu  varchar(50) NOT NULL,
    maXe  varchar(50) NOT NULL,
-   soLuong  int DEFAULT NULL,
-   donGia  bigint DEFAULT NULL
-);
+   soLuong  int(11) DEFAULT NULL,
+   donGia  double DEFAULT NULL
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table  ChiTietPhieuXuat 
@@ -477,7 +472,6 @@ VALUES
 
 
 
---
 -- Indexes for dumped tables
 --
 
@@ -485,25 +479,24 @@ VALUES
 -- Indexes for table  Account 
 --
 ALTER TABLE  Account 
-  ADD PRIMARY KEY ( userName );
+  ADD PRIMARY KEY ( userName ) USING BTREE;
 
 --
 -- Indexes for table  ChiTietPhieuNhap 
 --
 ALTER TABLE  ChiTietPhieuNhap 
-  ADD PRIMARY KEY ( maPhieu , maXe );
+  ADD PRIMARY KEY ( maPhieu , maXe ),
+  ADD KEY  FK_ChiTietPhieuNhap_XeMay  ( maXe );
 
-CREATE INDEX IX_ChiTietPhieuNhap_maXe ON ChiTietPhieuNhap (maXe);
 --
 -- Indexes for table  ChiTietPhieuXuat 
 --
 ALTER TABLE  ChiTietPhieuXuat 
-  ADD PRIMARY KEY ( maPhieu , maXe );
-  
-CREATE INDEX IX_ChiTietPhieuXuat_XeMay ON ChiTietPhieuXuat (maXe);
+  ADD PRIMARY KEY ( maPhieu , maXe ),
+  ADD KEY  FK_ChiTietPhieuXuat_XeMay  ( maXe );
 
 --
--- Indexes for table  XeMay 
+-- Indexes for table  MayTinh 
 --
 ALTER TABLE  XeMay 
   ADD PRIMARY KEY ( maXe );
@@ -518,18 +511,16 @@ ALTER TABLE  NhaCungCap
 -- Indexes for table  PhieuNhap 
 --
 ALTER TABLE  PhieuNhap 
-  ADD PRIMARY KEY ( maPhieu );
-  
-CREATE INDEX  IX_PhieuNhap_NhaCungCap ON PhieuNhap ( maNhaCungCap );
-CREATE INDEX  IX_PhieuNhap_Account ON PhieuNhap ( nguoiTao );
+  ADD PRIMARY KEY ( maPhieu ),
+  ADD KEY  FK_PhieuNhap_NhaCungCap  ( maNhaCungCap ),
+  ADD KEY  FK_PhieuNhap_Account  ( nguoiTao );
 
 --
 -- Indexes for table  PhieuXuat 
 --
 ALTER TABLE  PhieuXuat 
-  ADD PRIMARY KEY ( maPhieu );
-  
-CREATE INDEX  IX_PhieuXuat_Account ON PhieuXuat ( nguoiTao );
+  ADD PRIMARY KEY ( maPhieu ),
+  ADD KEY  FK_PhieuXuat_Account  ( nguoiTao );
 
 --
 -- Constraints for dumped tables
@@ -539,24 +530,21 @@ CREATE INDEX  IX_PhieuXuat_Account ON PhieuXuat ( nguoiTao );
 -- Constraints for table  ChiTietPhieuNhap 
 --
 ALTER TABLE  ChiTietPhieuNhap 
-  ADD CONSTRAINT  FK_ChiTietPhieuNhap_XeMay  FOREIGN KEY ( maXe ) REFERENCES  XeMay  ( maXe ) ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE  ChiTietPhieuNhap
+  ADD CONSTRAINT  FK_ChiTietPhieuNhap_XeMay  FOREIGN KEY ( maXe ) REFERENCES  XeMay  ( maXe ) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT  FK_ChiTietPhieuNhap_PhieuNhap  FOREIGN KEY ( maPhieu ) REFERENCES  PhieuNhap  ( maPhieu ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table  ChiTietPhieuXuat 
 --
 ALTER TABLE  ChiTietPhieuXuat 
-  ADD CONSTRAINT  FK_ChiTietPhieuXuat_XeMay  FOREIGN KEY ( maXe ) REFERENCES  XeMay  ( maXe ) ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE  ChiTietPhieuXuat 
+  ADD CONSTRAINT  FK_ChiTietPhieuXuat_XeMay  FOREIGN KEY ( maXe ) REFERENCES  XeMay  ( maXe ) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT  FK_ChiTietPhieuXuat_PhieuXuat  FOREIGN KEY ( maPhieu ) REFERENCES  PhieuXuat  ( maPhieu ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table  PhieuNhap 
 --
 ALTER TABLE  PhieuNhap 
-  ADD CONSTRAINT  FK_PhieuNhap_Account  FOREIGN KEY ( nguoiTao ) REFERENCES  Account  ( userName ) ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE  PhieuNhap 
+  ADD CONSTRAINT  FK_PhieuNhap_Account  FOREIGN KEY ( nguoiTao ) REFERENCES  Account  ( userName ) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT  FK_PhieuNhap_NhaCungCap  FOREIGN KEY ( maNhaCungCap ) REFERENCES  NhaCungCap  ( maNhaCungCap ) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
